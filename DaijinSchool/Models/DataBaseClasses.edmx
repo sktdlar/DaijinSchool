@@ -1,0 +1,1525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище DaidjinSchoolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstructorId" Type="int" />
+          <Property Name="DescriptionOfCourse" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Chats">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User1Id" Type="int" />
+          <Property Name="User2Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="CommentText" Type="nvarchar" MaxLength="500" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="DeletedCourses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCourse" Type="int" />
+          <Property Name="DateOfDeleting" Type="date" />
+        </EntityType>
+        <EntityType Name="FeedBack">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdCourse" Type="int" />
+          <Property Name="Question" Type="nvarchar" MaxLength="500" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ListOfCourses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatId" Type="int" />
+          <Property Name="SenderId" Type="int" />
+          <Property Name="MessageText" Type="nvarchar" MaxLength="500" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PreOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Count" Type="int" />
+          <Property Name="DateOfPreOrder" Type="date" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="Mark" Type="int" />
+        </EntityType>
+        <EntityType Name="Remainder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Count" Type="int" />
+          <Property Name="Discount" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="IsAvailable" Type="int" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="LessonNumber" Type="int" />
+          <Property Name="DescriptionOfLesson" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ScheduleMaterial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleId" Type="int" />
+          <Property Name="MaterialURL" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="IsPreOrdered" Type="int" />
+        </EntityType>
+        <EntityType Name="ShoppingCartItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ShoppingCartId" Type="int" />
+          <Property Name="CountOfItem" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserDB">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Category_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chats_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Chats" Type="Self.Chats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Chats">
+              <PropertyRef Name="User1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chats_UserDB1">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Chats" Type="Self.Chats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Chats">
+              <PropertyRef Name="User2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeletedCourses_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="DeletedCourses" Type="Self.DeletedCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DeletedCourses">
+              <PropertyRef Name="idCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedBack_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="IdCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedBack_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListOfCourses_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="ListOfCourses" Type="Self.ListOfCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ListOfCourses">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListOfCourses_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="ListOfCourses" Type="Self.ListOfCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ListOfCourses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Chats">
+          <End Role="Chats" Type="Self.Chats" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chats">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="ChatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreOrder_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="PreOrder" Type="Self.PreOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PreOrder">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreOrder_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="PreOrder" Type="Self.PreOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PreOrder">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Remainder_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Remainder" Type="Self.Remainder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Remainder">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Courses">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleMaterial_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="ScheduleMaterial" Type="Self.ScheduleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ScheduleMaterial">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCart_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartItem_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ShoppingCartItem" Type="Self.ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartItem_ShoppingCart">
+          <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="0..1" />
+          <End Role="ShoppingCartItem" Type="Self.ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="ShoppingCartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDB_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserDB">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DaidjinSchoolModelContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chats" EntityType="Self.Chats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeletedCourses" EntityType="Self.DeletedCourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeedBack" EntityType="Self.FeedBack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListOfCourses" EntityType="Self.ListOfCourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreOrder" EntityType="Self.PreOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Remainder" EntityType="Self.Remainder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduleMaterial" EntityType="Self.ScheduleMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoppingCartItem" EntityType="Self.ShoppingCartItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDB" EntityType="Self.UserDB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Category_UserDB" Association="Self.FK_Category_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chats_UserDB" Association="Self.FK_Chats_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Chats" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chats_UserDB1" Association="Self.FK_Chats_UserDB1">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Chats" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Courses" Association="Self.FK_Comments_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_UserDB" Association="Self.FK_Comments_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Category" Association="Self.FK_Courses_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeletedCourses_Courses" Association="Self.FK_DeletedCourses_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="DeletedCourses" EntitySet="DeletedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedBack_Courses" Association="Self.FK_FeedBack_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedBack_UserDB" Association="Self.FK_FeedBack_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListOfCourses_Courses" Association="Self.FK_ListOfCourses_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="ListOfCourses" EntitySet="ListOfCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListOfCourses_UserDB" Association="Self.FK_ListOfCourses_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="ListOfCourses" EntitySet="ListOfCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Chats" Association="Self.FK_Messages_Chats">
+            <End Role="Chats" EntitySet="Chats" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_UserDB" Association="Self.FK_Messages_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreOrder_Product1" Association="Self.FK_PreOrder_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PreOrder" EntitySet="PreOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreOrder_UserDB" Association="Self.FK_PreOrder_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="PreOrder" EntitySet="PreOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_Courses" Association="Self.FK_Rate_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_UserDB" Association="Self.FK_Rate_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remainder_Product" Association="Self.FK_Remainder_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Remainder" EntitySet="Remainder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Courses" Association="Self.FK_Schedule_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleMaterial_Schedule" Association="Self.FK_ScheduleMaterial_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="ScheduleMaterial" EntitySet="ScheduleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCart_UserDB" Association="Self.FK_ShoppingCart_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartItem_Product" Association="Self.FK_ShoppingCartItem_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartItem_ShoppingCart" Association="Self.FK_ShoppingCartItem_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDB_Role" Association="Self.FK_UserDB_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserDB" EntitySet="UserDB" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DaidjinSchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstructorId" Type="Int32" />
+          <Property Name="DescriptionOfCourse" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserDB" Relationship="Self.FK_Category_UserDB" FromRole="Category" ToRole="UserDB" />
+          <NavigationProperty Name="Courses" Relationship="DaidjinSchoolModel.FK_Courses_Category" FromRole="Category" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="Chats">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User1Id" Type="Int32" />
+          <Property Name="User2Id" Type="Int32" />
+          <NavigationProperty Name="UserDB" Relationship="Self.FK_Chats_UserDB" FromRole="Chats" ToRole="UserDB" />
+          <NavigationProperty Name="UserDB1" Relationship="Self.FK_Chats_UserDB1" FromRole="Chats" ToRole="UserDB" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK_Messages_Chats" FromRole="Chats" ToRole="Messages" />
+        </EntityType>
+        <EntityType Name="DeletedCourses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCourse" Type="Int32" />
+          <Property Name="DateOfDeleting" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Courses" Relationship="DaidjinSchoolModel.FK_DeletedCourses_Courses" FromRole="DeletedCourses" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="FeedBack">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdCourse" Type="Int32" />
+          <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserDB" Relationship="Self.FK_FeedBack_UserDB" FromRole="FeedBack" ToRole="UserDB" />
+          <NavigationProperty Name="Courses" Relationship="DaidjinSchoolModel.FK_FeedBack_Courses" FromRole="FeedBack" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatId" Type="Int32" />
+          <Property Name="SenderId" Type="Int32" />
+          <Property Name="MessageText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Chats" Relationship="Self.FK_Messages_Chats" FromRole="Messages" ToRole="Chats" />
+          <NavigationProperty Name="UserDB" Relationship="Self.FK_Messages_UserDB" FromRole="Messages" ToRole="UserDB" />
+        </EntityType>
+        <EntityType Name="PreOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="DateOfPreOrder" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PreOrder_Product1" FromRole="PreOrder" ToRole="Product" />
+          <NavigationProperty Name="UserDB" Relationship="Self.FK_PreOrder_UserDB" FromRole="PreOrder" ToRole="UserDB" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="PreOrder" Relationship="Self.FK_PreOrder_Product1" FromRole="Product" ToRole="PreOrder" />
+          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+          <NavigationProperty Name="Remainder" Relationship="Self.FK_Remainder_Product" FromRole="Product" ToRole="Remainder" />
+          <NavigationProperty Name="ShoppingCartItem" Relationship="DaidjinSchoolModel.FK_ShoppingCartItem_Product" FromRole="Product" ToRole="ShoppingCartItem" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="Mark" Type="Int32" />
+          <NavigationProperty Name="UserDB" Relationship="Self.FK_Rate_UserDB" FromRole="Rate" ToRole="UserDB" />
+          <NavigationProperty Name="Courses" Relationship="DaidjinSchoolModel.FK_Rate_Courses" FromRole="Rate" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="Remainder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Remainder_Product" FromRole="Remainder" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserDB" Relationship="Self.FK_UserDB_Role" FromRole="Role" ToRole="UserDB" />
+        </EntityType>
+        <EntityType Name="ScheduleMaterial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleId" Type="Int32" />
+          <Property Name="MaterialURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Schedule" Relationship="DaidjinSchoolModel.FK_ScheduleMaterial_Schedule" FromRole="ScheduleMaterial" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserDB">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Category_UserDB" FromRole="UserDB" ToRole="Category" />
+          <NavigationProperty Name="Chats" Relationship="Self.FK_Chats_UserDB" FromRole="UserDB" ToRole="Chats" />
+          <NavigationProperty Name="Chats1" Relationship="Self.FK_Chats_UserDB1" FromRole="UserDB" ToRole="Chats" />
+          <NavigationProperty Name="FeedBack" Relationship="Self.FK_FeedBack_UserDB" FromRole="UserDB" ToRole="FeedBack" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK_Messages_UserDB" FromRole="UserDB" ToRole="Messages" />
+          <NavigationProperty Name="PreOrder" Relationship="Self.FK_PreOrder_UserDB" FromRole="UserDB" ToRole="PreOrder" />
+          <NavigationProperty Name="Rate" Relationship="Self.FK_Rate_UserDB" FromRole="UserDB" ToRole="Rate" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserDB_Role" FromRole="UserDB" ToRole="Role" />
+          <NavigationProperty Name="ListOfCourses" Relationship="DaidjinSchoolModel.FK_ListOfCourses_UserDB" FromRole="UserDB" ToRole="ListOfCourses" />
+          <NavigationProperty Name="ShoppingCart" Relationship="DaidjinSchoolModel.FK_ShoppingCart_UserDB" FromRole="UserDB" ToRole="ShoppingCart" />
+          <NavigationProperty Name="Comments" Relationship="DaidjinSchoolModel.FK_Comments_UserDB" FromRole="UserDB" ToRole="Comments" />
+        </EntityType>
+        <Association Name="FK_Category_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chats_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Chats" Type="Self.Chats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Chats">
+              <PropertyRef Name="User1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chats_UserDB1">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Chats" Type="Self.Chats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Chats">
+              <PropertyRef Name="User2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Chats">
+          <End Role="Chats" Type="Self.Chats" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chats">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="ChatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedBack_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreOrder_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="PreOrder" Type="Self.PreOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PreOrder">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreOrder_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="PreOrder" Type="Self.PreOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PreOrder">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Remainder_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Remainder" Type="Self.Remainder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Remainder">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_UserDB">
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDB_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="UserDB" Type="Self.UserDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserDB">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DaidjinSchoolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Chats" EntityType="Self.Chats" />
+          <EntitySet Name="DeletedCourses" EntityType="Self.DeletedCourses" />
+          <EntitySet Name="FeedBack" EntityType="Self.FeedBack" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" />
+          <EntitySet Name="PreOrder" EntityType="Self.PreOrder" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" />
+          <EntitySet Name="Remainder" EntityType="Self.Remainder" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="ScheduleMaterial" EntityType="Self.ScheduleMaterial" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UserDB" EntityType="Self.UserDB" />
+          <AssociationSet Name="FK_Category_UserDB" Association="Self.FK_Category_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chats_UserDB" Association="Self.FK_Chats_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Chats" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chats_UserDB1" Association="Self.FK_Chats_UserDB1">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Chats" EntitySet="Chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Chats" Association="Self.FK_Messages_Chats">
+            <End Role="Chats" EntitySet="Chats" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedBack_UserDB" Association="Self.FK_FeedBack_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_UserDB" Association="Self.FK_Messages_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreOrder_Product1" Association="Self.FK_PreOrder_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PreOrder" EntitySet="PreOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreOrder_UserDB" Association="Self.FK_PreOrder_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="PreOrder" EntitySet="PreOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Remainder_Product" Association="Self.FK_Remainder_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Remainder" EntitySet="Remainder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_UserDB" Association="Self.FK_Rate_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDB_Role" Association="Self.FK_UserDB_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserDB" EntitySet="UserDB" />
+          </AssociationSet>
+          <EntitySet Name="Courses" EntityType="DaidjinSchoolModel.Courses" />
+          <AssociationSet Name="FK_Courses_Category" Association="DaidjinSchoolModel.FK_Courses_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeletedCourses_Courses" Association="DaidjinSchoolModel.FK_DeletedCourses_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="DeletedCourses" EntitySet="DeletedCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedBack_Courses" Association="DaidjinSchoolModel.FK_FeedBack_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="FeedBack" EntitySet="FeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_Courses" Association="DaidjinSchoolModel.FK_Rate_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <EntitySet Name="ListOfCourses" EntityType="DaidjinSchoolModel.ListOfCourses" />
+          <AssociationSet Name="FK_ListOfCourses_Courses" Association="DaidjinSchoolModel.FK_ListOfCourses_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="ListOfCourses" EntitySet="ListOfCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListOfCourses_UserDB" Association="DaidjinSchoolModel.FK_ListOfCourses_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="ListOfCourses" EntitySet="ListOfCourses" />
+          </AssociationSet>
+          <EntitySet Name="Schedule" EntityType="DaidjinSchoolModel.Schedule" />
+          <AssociationSet Name="FK_Schedule_Courses" Association="DaidjinSchoolModel.FK_Schedule_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleMaterial_Schedule" Association="DaidjinSchoolModel.FK_ScheduleMaterial_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="ScheduleMaterial" EntitySet="ScheduleMaterial" />
+          </AssociationSet>
+          <EntitySet Name="ShoppingCart" EntityType="DaidjinSchoolModel.ShoppingCart" />
+          <AssociationSet Name="FK_ShoppingCart_UserDB" Association="DaidjinSchoolModel.FK_ShoppingCart_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+          </AssociationSet>
+          <EntitySet Name="ShoppingCartItem" EntityType="DaidjinSchoolModel.ShoppingCartItem" />
+          <AssociationSet Name="FK_ShoppingCartItem_Product" Association="DaidjinSchoolModel.FK_ShoppingCartItem_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartItem_ShoppingCart" Association="DaidjinSchoolModel.FK_ShoppingCartItem_ShoppingCart">
+            <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItem" />
+          </AssociationSet>
+          <EntitySet Name="Comments" EntityType="DaidjinSchoolModel.Comments" />
+          <AssociationSet Name="FK_Comments_Courses" Association="DaidjinSchoolModel.FK_Comments_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_UserDB" Association="DaidjinSchoolModel.FK_Comments_UserDB">
+            <End Role="UserDB" EntitySet="UserDB" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Category" Relationship="DaidjinSchoolModel.FK_Courses_Category" FromRole="Courses" ToRole="Category" />
+          <NavigationProperty Name="DeletedCourses" Relationship="DaidjinSchoolModel.FK_DeletedCourses_Courses" FromRole="Courses" ToRole="DeletedCourses" />
+          <NavigationProperty Name="FeedBack" Relationship="DaidjinSchoolModel.FK_FeedBack_Courses" FromRole="Courses" ToRole="FeedBack" />
+          <NavigationProperty Name="Rate" Relationship="DaidjinSchoolModel.FK_Rate_Courses" FromRole="Courses" ToRole="Rate" />
+          <NavigationProperty Name="ListOfCourses" Relationship="DaidjinSchoolModel.FK_ListOfCourses_Courses" FromRole="Courses" ToRole="ListOfCourses" />
+          <NavigationProperty Name="Schedule" Relationship="DaidjinSchoolModel.FK_Schedule_Courses" FromRole="Courses" ToRole="Schedule" />
+          <NavigationProperty Name="Comments" Relationship="DaidjinSchoolModel.FK_Comments_Courses" FromRole="Courses" ToRole="Comments" />
+        </EntityType>
+        <Association Name="FK_Courses_Category">
+          <End Type="DaidjinSchoolModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.Courses" Role="Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeletedCourses_Courses">
+          <End Type="DaidjinSchoolModel.Courses" Role="Courses" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.DeletedCourses" Role="DeletedCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DeletedCourses">
+              <PropertyRef Name="idCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedBack_Courses">
+          <End Type="DaidjinSchoolModel.Courses" Role="Courses" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.FeedBack" Role="FeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FeedBack">
+              <PropertyRef Name="IdCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_Courses">
+          <End Type="DaidjinSchoolModel.Courses" Role="Courses" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.Rate" Role="Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ListOfCourses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="Courses" Relationship="DaidjinSchoolModel.FK_ListOfCourses_Courses" FromRole="ListOfCourses" ToRole="Courses" />
+          <NavigationProperty Name="UserDB" Relationship="DaidjinSchoolModel.FK_ListOfCourses_UserDB" FromRole="ListOfCourses" ToRole="UserDB" />
+        </EntityType>
+        <Association Name="FK_ListOfCourses_Courses">
+          <End Type="DaidjinSchoolModel.Courses" Role="Courses" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.ListOfCourses" Role="ListOfCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ListOfCourses">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListOfCourses_UserDB">
+          <End Type="DaidjinSchoolModel.UserDB" Role="UserDB" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.ListOfCourses" Role="ListOfCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ListOfCourses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="IsAvailable" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="LessonNumber" Type="Int32" />
+          <Property Name="DescriptionOfLesson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Courses" Relationship="DaidjinSchoolModel.FK_Schedule_Courses" FromRole="Schedule" ToRole="Courses" />
+          <NavigationProperty Name="ScheduleMaterial" Relationship="DaidjinSchoolModel.FK_ScheduleMaterial_Schedule" FromRole="Schedule" ToRole="ScheduleMaterial" />
+        </EntityType>
+        <Association Name="FK_Schedule_Courses">
+          <End Type="DaidjinSchoolModel.Courses" Role="Courses" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleMaterial_Schedule">
+          <End Type="DaidjinSchoolModel.Schedule" Role="Schedule" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.ScheduleMaterial" Role="ScheduleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ScheduleMaterial">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ShoppingCart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="IsPreOrdered" Type="Int32" />
+          <NavigationProperty Name="UserDB" Relationship="DaidjinSchoolModel.FK_ShoppingCart_UserDB" FromRole="ShoppingCart" ToRole="UserDB" />
+          <NavigationProperty Name="ShoppingCartItem" Relationship="DaidjinSchoolModel.FK_ShoppingCartItem_ShoppingCart" FromRole="ShoppingCart" ToRole="ShoppingCartItem" />
+        </EntityType>
+        <Association Name="FK_ShoppingCart_UserDB">
+          <End Type="DaidjinSchoolModel.UserDB" Role="UserDB" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.ShoppingCart" Role="ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ShoppingCart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ShoppingCartItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ShoppingCartId" Type="Int32" />
+          <Property Name="CountOfItem" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="DaidjinSchoolModel.FK_ShoppingCartItem_Product" FromRole="ShoppingCartItem" ToRole="Product" />
+          <NavigationProperty Name="ShoppingCart" Relationship="DaidjinSchoolModel.FK_ShoppingCartItem_ShoppingCart" FromRole="ShoppingCartItem" ToRole="ShoppingCart" />
+        </EntityType>
+        <Association Name="FK_ShoppingCartItem_Product">
+          <End Type="DaidjinSchoolModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.ShoppingCartItem" Role="ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartItem_ShoppingCart">
+          <End Type="DaidjinSchoolModel.ShoppingCart" Role="ShoppingCart" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.ShoppingCartItem" Role="ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCart">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="ShoppingCartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="CommentText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Courses" Relationship="DaidjinSchoolModel.FK_Comments_Courses" FromRole="Comments" ToRole="Courses" />
+          <NavigationProperty Name="UserDB" Relationship="DaidjinSchoolModel.FK_Comments_UserDB" FromRole="Comments" ToRole="UserDB" />
+        </EntityType>
+        <Association Name="FK_Comments_Courses">
+          <End Type="DaidjinSchoolModel.Courses" Role="Courses" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.Comments" Role="Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_UserDB">
+          <End Type="DaidjinSchoolModel.UserDB" Role="UserDB" Multiplicity="0..1" />
+          <End Type="DaidjinSchoolModel.Comments" Role="Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDB">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DaidjinSchoolModelContainer" CdmEntityContainer="DaidjinSchoolEntities">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+                <ScalarProperty Name="DescriptionOfCourse" ColumnName="DescriptionOfCourse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chats">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Chats">
+              <MappingFragment StoreEntitySet="Chats">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="User1Id" ColumnName="User1Id" />
+                <ScalarProperty Name="User2Id" ColumnName="User2Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeletedCourses">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.DeletedCourses">
+              <MappingFragment StoreEntitySet="DeletedCourses">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCourse" ColumnName="idCourse" />
+                <ScalarProperty Name="DateOfDeleting" ColumnName="DateOfDeleting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedBack">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.FeedBack">
+              <MappingFragment StoreEntitySet="FeedBack">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdCourse" ColumnName="IdCourse" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Messages">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreOrder">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.PreOrder">
+              <MappingFragment StoreEntitySet="PreOrder">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="DateOfPreOrder" ColumnName="DateOfPreOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategory">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rate">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Rate">
+              <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Remainder">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Remainder">
+              <MappingFragment StoreEntitySet="Remainder">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduleMaterial">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.ScheduleMaterial">
+              <MappingFragment StoreEntitySet="ScheduleMaterial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="MaterialURL" ColumnName="MaterialURL" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDB">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.UserDB">
+              <MappingFragment StoreEntitySet="UserDB">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Courses">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListOfCourses">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.ListOfCourses">
+              <MappingFragment StoreEntitySet="ListOfCourses">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedule">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="DescriptionOfLesson" ColumnName="DescriptionOfLesson" />
+                <ScalarProperty Name="LessonNumber" ColumnName="LessonNumber" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCart">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.ShoppingCart">
+              <MappingFragment StoreEntitySet="ShoppingCart">
+                <ScalarProperty Name="IsPreOrdered" ColumnName="IsPreOrdered" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCartItem">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.ShoppingCartItem">
+              <MappingFragment StoreEntitySet="ShoppingCartItem">
+                <ScalarProperty Name="CountOfItem" ColumnName="CountOfItem" />
+                <ScalarProperty Name="ShoppingCartId" ColumnName="ShoppingCartId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="DaidjinSchoolModel.Comments">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

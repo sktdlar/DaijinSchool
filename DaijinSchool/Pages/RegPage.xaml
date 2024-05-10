@@ -1,0 +1,102 @@
+﻿<Page x:Class="DaijinSchool.Pages.RegPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DaijinSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="918" d:DesignWidth="1920" Background="White"
+      Title="RegPage">
+
+
+    <Grid Background="#15855588">
+        <Label FontSize="32" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">Профиль</Label>
+        <Grid Margin="100">
+            <Border VerticalAlignment="Top" Height="400" Width="400" HorizontalAlignment="Left" Margin="10"  BorderThickness="2" BorderBrush="Black">
+                <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                    <Image Panel.ZIndex="1" Name="ImageEdit" Source="{Binding Image}"/>
+                    <TextBlock Panel.ZIndex="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100">+</TextBlock>
+                </Grid>
+            </Border>
+            <StackPanel Name="FirstPart" Margin="10" VerticalAlignment="Top"  HorizontalAlignment="Right">
+                <Border Margin="10" Background="AliceBlue" CornerRadius="35">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="28">
+            Фамилия
+                        </TextBlock>
+                        <TextBox Width="500" Text="{Binding LastName}" Padding="10" Background="{x:Null}" Margin="10" FontSize="28"/>
+                    </StackPanel>
+                </Border>
+                <Border Margin="10" Background="AliceBlue" CornerRadius="35">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="28">
+                            Имя
+                        </TextBlock>
+                        <TextBox Width="575" Text="{Binding FirstName}" Padding="10" Background="{x:Null}" Margin="10" FontSize="28"/>
+                    </StackPanel>
+                </Border>
+                <Border Margin="10" Background="AliceBlue" CornerRadius="35">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="28">
+            Отчество
+                        </TextBlock>
+                        <TextBox Width="500" Text="{Binding Patronymic}" Padding="10" Background="{x:Null}" Margin="10" FontSize="28"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Margin="10" Background="AliceBlue" CornerRadius="35" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="28">
+            Дата рождения
+                        </TextBlock>
+                        <DatePicker Width="400" Background="{x:Null}" Padding="10" VerticalAlignment="Center" SelectedDate="{Binding DateOfBirth}" FontSize="28"/>
+
+                    </StackPanel>
+                </Border>
+                <Border Margin="10" Background="AliceBlue" CornerRadius="35" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="28">
+            Роль
+                        </TextBlock>
+                        <ComboBox Name="RoleCb" VerticalAlignment="Center" Width="550" SelectedItem="{Binding Role}" FontSize="28"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <StackPanel Name="SeccondPart" Visibility="Collapsed" Margin="10" VerticalAlignment="Center"  HorizontalAlignment="Right">
+                <Border Margin="10"  Background="AliceBlue" CornerRadius="35" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="28">
+Email
+                        </TextBlock>
+                        <TextBox Width="500" Text="{Binding Email}" Padding="10" Background="{x:Null}" FontSize="28">
+                        </TextBox>
+                    </StackPanel>
+                </Border>
+                <Border Margin="10"  Background="AliceBlue" CornerRadius="35" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="28">
+Пароль
+                        </TextBlock>
+                        <TextBox x:Name="pass" Width="475" Text="{Binding Password}" Padding="10" Background="{x:Null}" FontSize="28">
+                        </TextBox>
+                    </StackPanel>
+                </Border>
+                <Border Margin="10"  Background="AliceBlue" CornerRadius="35" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" FontSize="28">
+Повторите пароль
+                        </TextBlock>
+                        <TextBox TextChanged="Pass2_TextChanged" Width="325" Name="Pass2" Padding="10" Background="{x:Null}" FontSize="28">
+                        </TextBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Border BorderBrush="Gray"  VerticalAlignment="Bottom"  Margin="10" BorderThickness="2" Background="AliceBlue" CornerRadius="25">
+            <Button Background="{x:Null}"  Name="SaveBtn" BorderBrush="{x:Null}" Padding="10" FontSize="28" Click="SaveBtn_Click" >
+                Продолжить регистрацию
+            </Button>
+        </Border>
+    </Grid>
+</Page>

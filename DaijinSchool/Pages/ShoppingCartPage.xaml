@@ -1,0 +1,44 @@
+﻿<Page x:Class="DaijinSchool.Pages.ShoppingCartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DaijinSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="918" d:DesignWidth="1920" Background="White"
+      Title="ShoppingCartPage">
+
+    <Grid Background="#15855588">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="10">
+            <TextBlock FontWeight="Medium" TextWrapping="Wrap" FontSize="64" Margin="10">
+            Корзина товаров
+            </TextBlock>
+            <TextBlock TextWrapping="Wrap" FontSize="24" Margin="30">
+            Как только вы нажмете кнопку "Предзаказ" в оффлайн магазине Daijin будут забронированы предзаказанные товары. Приходите и забирайте!!
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+            <StackPanel HorizontalAlignment="Left" Grid.Row="1" Width="500">
+                <TextBlock Margin="10" FontSize="16" TextWrapping="Wrap">
+                    
+Нажимая кнопку "Предзаказать товары", вы соглашаетесь с тем, что товар будет зарезервирован для вас, и вы сможете забрать его сразу после его поступления в магазин. Предзаказ дает вам уверенность в том, что товар будет доступен для вас в момент его появления в продаже, и вы сможете получить его без лишних ожиданий. Пожалуйста, обратите внимание, что условия предзаказа могут различаться в зависимости от товара, поэтому перед оформлением предзаказа внимательно ознакомьтесь с правилами и условиями. Мы ценим ваше удовлетворение покупкой и стремимся обеспечить максимальный комфорт и удобство при совершении покупок в нашем магазине. Благодарим вас за ваш выбор!
+                </TextBlock>
+                <Button Name="PreOrderBtn" Background="AliceBlue" FontSize="20" Margin="20" Click="PreOrderBtn_Click">
+                    Заказать
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Name="VoidTb" Visibility="Collapsed" Width="1000" FontSize="24" TextAlignment="Center" HorizontalAlignment="Right" Margin="0 0 50 0" Grid.Row="1">
+            Корзина пуста
+        </TextBlock>
+        <ScrollViewer Width="1000" HorizontalContentAlignment="Right" HorizontalAlignment="Right" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <WrapPanel Name="ProductsWP"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

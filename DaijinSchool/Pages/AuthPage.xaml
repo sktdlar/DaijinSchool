@@ -1,0 +1,83 @@
+﻿<Page x:Class="DaijinSchool.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DaijinSchool.Pages"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      mc:Ignorable="d" 
+      d:DesignHeight="918" d:DesignWidth="1920" Background="White"
+      Title="AuthPage">
+    <Grid>
+        <Grid Visibility="Visible" Name="MainGrid">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Visibility="Visible" VerticalAlignment="Bottom">
+                <Button VerticalAlignment="Bottom" FontSize="24" HorizontalAlignment="Right" Click="Button_Click">
+                    Войти пользователем
+                </Button>
+                <Button  VerticalAlignment="Bottom" FontSize="24" HorizontalAlignment="Right" Click="Button_Click_1">
+                    Войти Предподом
+                </Button>
+                <Button  VerticalAlignment="Bottom" FontSize="24" HorizontalAlignment="Right" Click="Button_Click_2">
+                    Войти Админом
+                </Button>
+            </StackPanel>
+            <Image  HorizontalAlignment="Left" Height="600" VerticalAlignment="Bottom" Source="/Images/MainLogo.png" />
+            <!--<StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Center">
+            <TextBlock FontSize="28">
+                Добро пожаловать на платформу "Дайдзин"!
+            </TextBlock>
+            <TextBlock FontSize="20" TextWrapping="Wrap"  HorizontalAlignment="Left" Margin="0 10 10 0">
+                Мы рады приветствовать вас в мире изобразительного искусства. "Дайдзин" - это место, где вы можете раскрыть свой творческий потенциал, обрести новые навыки и погрузиться в увлекательный мир художественного творчества.
+            </TextBlock>
+            <TextBlock FontSize="28" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0 10 10 0">
+                О нас:
+            </TextBlock>
+            <TextBlock FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0 10 10 0">
+                "Дайдзин" - это онлайн платформа, специализирующаяся на предоставлении доступа к высококачественным онлайн курсам по различным направлениям изобразительного искусства. Мы предлагаем широкий спектр курсов, которые охватывают разнообразные темы, от акварельной живописи до манги и анимации.
+            </TextBlock>
+            <TextBlock FontSize="20" TextWrapping="Wrap"  HorizontalAlignment="Left" Margin="0 10 10 0">
+                Вы можете выбрать курс, который соответствует вашим интересам и целям. У нас есть курсы для начинающих и опытных художников. Помимо курсов, мы также предлагаем широкий выбор товаров для художников и любителей изобразительного искусства.
+            </TextBlock>
+            <TextBlock FontSize="28" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0 10 10 0">
+                Присоединяйтесь к нам прямо сейчас и откройте для себя мир творчества на платформе "Дайдзин"!
+            </TextBlock>
+        </StackPanel>-->
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Bottom" Source="/Images/MainLogo.png" />
+                    <TextBlock Margin="10" FontSize="24">Онлайн платформа курсов<LineBreak/>DAIJIN</TextBlock>
+                </StackPanel>
+                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBlock Margin="10" FontSize="28">Email</TextBlock>
+                    <TextBox Width="500" Name="EmailTb" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF7093FF" SelectionBrush="#FF03FF00"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBlock Margin="10" FontSize="28">Пароль</TextBlock>
+                    <PasswordBox Width="500" Name="PasswordTb" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF7093FF" SelectionBrush="#FF03FF00"></PasswordBox>
+                </StackPanel>
+                <TextBlock Name="PromptTb" Visibility="Collapsed"  HorizontalAlignment="Center" FontSize="20" Foreground="#FFC00202">
+                Не правильный логин или пароль
+                </TextBlock>
+                <Button Name="LoginBtn" Margin="10" FontSize="28" Padding="10" BorderBrush="#FF7093FF" Background="#FF7093FF" Click="LoginBtn_Click">Войти</Button>
+                <Button Name="RegBtn"  Margin="10 10 10 0" FontSize="28" Padding="10" BorderBrush="#FF7093FF" Background="#FF7093FF" Click="RegBtn_Click">Регистрация</Button>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16">Впервый раз?</TextBlock>
+            </StackPanel>
+
+        </Grid>
+        <Grid Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" Name="PromptGrid">
+            <StackPanel>
+                <Image gif:ImageBehavior.AnimatedSource="/Images/dance.gif" Height="300"  Width="300" Source="/Images/dance.gif" />
+                <TextBlock Visibility="Visible" Name="LoadingTb" FontSize="64">
+                Загрузка...
+                </TextBlock>
+
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,59 @@
+﻿<Page x:Class="DaijinSchool.Pages.AdminProdsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DaijinSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="918" d:DesignWidth="1920"  Background="White" Loaded="Page_Loaded"
+      Title="AdminProdsPage" >
+
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <DataGrid IsReadOnly="True" x:Name="ProdsDg" AutoGenerateColumns="False" Height="500" SelectionChanged="ProdsDg_SelectionChanged" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}"/>
+                            <DataGridTextColumn Header="Название товара" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Описание" Binding="{Binding Description}"/>
+                            <DataGridTextColumn Header="Категория товара" Binding="{Binding ProductCategory.Name}" />
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Price}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Button Margin="10" Padding="5" FontSize="16" Name="AddProdBtn" Content="Добавить карточку товара" Click="AddProdBtn_Click"/>
+                        <Button Margin="10" Padding="5" FontSize="16" Name="EditProdBtn" Content="Изменить карточку товара" Click="EditProdBtn_Click"/>
+                        <Button Margin="10" Padding="5" FontSize="16" Name="RemindersBTn" Content="Управлять остатками товара" Click="RemindersBTn_Click"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <DataGrid VerticalAlignment="Top" IsReadOnly="True" Name="RemindersDg" Grid.Column="1" Height="500" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID остатка" Binding="{Binding id}"/>
+                            <DataGridTextColumn Header="Количество товара" Binding="{Binding Count}"/>
+                            <DataGridTextColumn Header="Скидка" Binding="{Binding Discount}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Margin="10" Orientation="Horizontal">
+                        <Button Margin="10" Name="AddRenminder" Padding="5" FontSize="16" Click="AddRenminder_Click">
+                            Добавить остаток
+                        </Button>
+                        <Button Margin="10" Name="DelReminder" Padding="5" FontSize="16" Click="DelReminder_Click">
+                            Удалить остаток
+                        </Button>
+                        <Button Margin="10" Name="EditReminder" Padding="5" FontSize="16" Click="EditReminder_Click">
+                            Изменить остаток
+                        </Button>
+                    </StackPanel>
+                    <Frame Height="200" Name="ReminderFrame">
+                    </Frame>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

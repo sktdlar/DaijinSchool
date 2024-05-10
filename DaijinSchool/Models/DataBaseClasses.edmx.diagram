@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b6210cda46245b89c6300d7850dd1f9" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Category" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Chats" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.DeletedCourses" Width="1.5" PointX="9.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.FeedBack" Width="1.5" PointX="12.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Messages" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.PreOrder" Width="1.5" PointX="10.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Product" Width="1.5" PointX="8" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.ProductCategory" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Rate" Width="1.5" PointX="12.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Remainder" Width="1.5" PointX="10.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Role" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.ScheduleMaterial" Width="1.5" PointX="12" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.UserDB" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Category_UserDB" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Chats_UserDB" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Chats_UserDB1" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Messages_Chats" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_FeedBack_UserDB" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Messages_UserDB" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_PreOrder_Product1" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_PreOrder_UserDB" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Remainder_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Rate_UserDB" ManuallyRouted="false" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_UserDB_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Courses" Width="1.5" PointX="7.5" PointY="9" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Courses_Category" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_DeletedCourses_Courses" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_FeedBack_Courses" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Rate_Courses" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.ListOfCourses" Width="1.5" PointX="12.75" PointY="14.625" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_ListOfCourses_Courses" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_ListOfCourses_UserDB" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Schedule" Width="1.5" PointX="9.75" PointY="17.625" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Schedule_Courses" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_ScheduleMaterial_Schedule" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.ShoppingCart" Width="1.5" PointX="5.25" PointY="17.75" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_ShoppingCart_UserDB" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.ShoppingCartItem" Width="1.5" PointX="15.25" PointY="11.375" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_ShoppingCartItem_Product" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_ShoppingCartItem_ShoppingCart" />
+        <EntityTypeShape EntityType="DaidjinSchoolModel.Comments" Width="1.5" PointX="9.75" PointY="14.375" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Comments_Courses" />
+        <AssociationConnector Association="DaidjinSchoolModel.FK_Comments_UserDB" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

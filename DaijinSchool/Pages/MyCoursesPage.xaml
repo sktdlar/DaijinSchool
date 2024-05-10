@@ -1,0 +1,31 @@
+﻿<Page x:Class="DaijinSchool.Pages.MyCoursesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:DaijinSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="918" d:DesignWidth="1920"  Background="#15855588" Loaded="Page_Loaded"
+      Title="MyCoursesPage">
+
+    <Grid>
+        <Grid Name="MainGd" Grid.RowSpan="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="10">
+                <TextBlock FontWeight="Medium" TextWrapping="Wrap" FontSize="48" Margin="10">
+                Мои курсы
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" FontSize="24" Margin="20">
+                Просмотрите материалы курсов сейчас или вернитесь к ним позже. Они никуда не пропадут!
+                </TextBlock>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1"  HorizontalContentAlignment="Center"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <WrapPanel Name="CoursesWP"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

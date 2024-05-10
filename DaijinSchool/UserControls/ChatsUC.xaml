@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="DaijinSchool.UserControls.ChatsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DaijinSchool.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="400" Background="White" Margin="10" BorderBrush="Black" BorderThickness="1" MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
+    <Grid  Background="#15855588">
+        <StackPanel Orientation="Horizontal">
+            <Image Name="AvatarImg" Margin="10" HorizontalAlignment="Left" Width="80" Height="80">
+                <Image.Clip>
+                    <EllipseGeometry Center="100,100" RadiusX="100" RadiusY="100"/>
+                </Image.Clip>
+            </Image>
+            <TextBlock TextWrapping="Wrap" Margin="30 10 10 10" FontSize="14" Width="250" Name="FIOTb" VerticalAlignment="Center" HorizontalAlignment="Center">
+                
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

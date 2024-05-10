@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="DaijinSchool.UserControls.ScheduleUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DaijinSchool.UserControls"
+             mc:Ignorable="d" 
+                          MaxHeight="500" MaxWidth="400" MinHeight="500" Background="{x:Null}" MinWidth="400" BorderThickness="0" Height="500" Width="400">
+    <!--MouseLeftButtonDown="Grid_MouseLeftButtonDown"-->
+    <Border MouseLeftButtonDown="Grid_MouseLeftButtonDown"  BorderThickness="1" BorderBrush="Black" Height="500" Width="400" VerticalAlignment="Bottom" Background="White" CornerRadius="30">
+    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="{x:Null}" Margin="10">
+            <StackPanel>
+                <TextBlock Name="DateTb" Text="{Binding Date}" FontSize="28" Margin="20 20 20 0" TextWrapping="Wrap">
+                </TextBlock>
+                <TextBlock  Text="{Binding Description}" FontSize="18" Margin="20 20 20 0" TextWrapping="Wrap">
+                </TextBlock>
+                <Grid Margin="20 20 20 0">
+                    <Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="18" VerticalAlignment="Center">
+                Курс
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Right" Width="250" Text="{Binding Courses.Name}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Grid.Column="1" >
+                    </TextBlock>
+                </Grid>
+                <Grid Margin="20 20 20 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="18" VerticalAlignment="Center">
+                Категория
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Right" Text="{Binding Courses.Category.Name}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Grid.Column="1" >
+                    </TextBlock>
+                </Grid>
+                <Grid Margin="20 20 20 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="18" VerticalAlignment="Center">
+                Номер урока
+                    </TextBlock>
+                    <TextBlock Text="{Binding LessonNumber}" HorizontalAlignment="Right" Foreground="Black" VerticalAlignment="Center" FontSize="20" Grid.Column="1"/>
+                </Grid>
+                <StackPanel Margin="10">
+                    <TextBlock FontSize="18" VerticalAlignment="Center">
+                Описание урока:
+                    </TextBlock>
+                    <ScrollViewer Margin="0 10 0 10" Height="200" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                        <TextBlock Text="{Binding DescriptionOfLesson}" TextWrapping="Wrap" HorizontalAlignment="Right" Foreground="Lime" VerticalAlignment="Center" FontSize="20" Grid.Column="1"/>
+                    </ScrollViewer>
+                </StackPanel>
+            </StackPanel>
+            </Grid>
+        </Border>
+
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="#FFD6D6D6" Direction="270" ShadowDepth="10" BlurRadius="20"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+</UserControl>

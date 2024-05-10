@@ -1,0 +1,29 @@
+﻿<Page x:Class="DaijinSchool.Pages.ShopPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DaijinSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="918" d:DesignWidth="1920" Background="White"
+      Title="ShopPage">
+
+    <Grid Background="#15855588">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="10">
+            <TextBlock FontWeight="Medium" TextWrapping="Wrap" FontSize="48" Margin="10">
+                Предзаказ специальных материалов
+            </TextBlock>
+            <TextBlock TextWrapping="Wrap" FontSize="24" Margin="10">
+                Чтобы добавить в корзину просто нажмите на иконку товара!
+            </TextBlock>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1"  HorizontalContentAlignment="Center" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <WrapPanel Name="ProductsWP"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

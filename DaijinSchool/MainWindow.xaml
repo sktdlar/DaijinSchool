@@ -1,0 +1,45 @@
+﻿<Window x:Class="DaijinSchool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DaijinSchool"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1920" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="ThreeDBorderWindow">
+    <Grid Background="#FFC5BAFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="85*"/>
+        </Grid.RowDefinitions>
+        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Background="White" Grid.Row="1"/>
+
+
+        <StackPanel Orientation="Horizontal">
+            <Image Height="100" Width="100" Margin="20 0 20 0" Source="/Images/MainLogo.png" />
+            <TextBlock FontSize="30">Онлайн платформа курсов<LineBreak/>DAIJIN</TextBlock>
+            <Rectangle Margin="10" Height="70" Width="2" Fill="#FF9C89FF"/>
+            <StackPanel Name="InServiceSP" Visibility="Collapsed" Orientation="Horizontal">
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click">Профиль</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_1">Курсы</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_2">Мои курсы</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_3">Магазин</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_4">Корзина</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_5">Предзаказы</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_6">Сообщения</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_7">Выход</Hyperlink></TextBlock>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed" Orientation="Horizontal" Name="TeacherSP">
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click">Профиль</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_1">Курсы</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_8">Добавить курс</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_7">Выход</Hyperlink></TextBlock>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed" Orientation="Horizontal" Name="AdminSP">
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click">Профиль</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_9">Курсы</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_10">Товары</Hyperlink></TextBlock>
+                <TextBlock FontSize="20" Margin="10"><Hyperlink Click="Hyperlink_Click_7">Выход</Hyperlink></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

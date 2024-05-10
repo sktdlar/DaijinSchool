@@ -1,0 +1,36 @@
+﻿<Page x:Class="DaijinSchool.Pages.ScheduleForTeacherPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DaijinSchool.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="918" d:DesignWidth="1920" Background="White"
+      Title="ScheduleForTeacherPage" Loaded="Page_Loaded">
+
+    <Grid Background="#15855588">
+        <ScrollViewer Name="scrollView">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label FontSize="32" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">Опубликованные материалы</Label>
+                    <TextBlock Margin="30 0 0 0" FontSize="20"><Hyperlink Click="Hyperlink_Click">Комментарии к курсу</Hyperlink></TextBlock>
+                    <TextBlock Margin="30 0 0 0" FontSize="20"><Hyperlink Click="Hyperlink_Click_1">Добавить урок</Hyperlink></TextBlock>
+                    <TextBlock Margin="30 0 0 0" FontSize="20"><Hyperlink Click="Hyperlink_Click_2">Подписчики курса</Hyperlink></TextBlock>
+                </StackPanel>
+                <ScrollViewer  Background="{x:Null}" Margin="10" Height="550" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                    <WrapPanel Name="ScheduleWP"/>
+                </ScrollViewer>
+                <StackPanel>
+                    <Label FontSize="32">
+                        Комментарии
+                    </Label>
+                    <ScrollViewer Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <WrapPanel Name="FeedBackWP">
+
+                        </WrapPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
